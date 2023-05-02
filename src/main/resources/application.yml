@@ -1,0 +1,38 @@
+app:
+  title: Product Service API Documentation
+  description: Information on the available endpoints, request format, responses returned, and JSON entities used.
+  version: 1.0.0
+  kafka:
+    host: localhost
+    port: 29092
+    topic: logger
+server:
+  port: 8010
+logging:
+  level:
+    com:
+      cd: TRACE
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/poc
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+  sql:
+    init:
+      mode: always
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
